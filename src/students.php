@@ -10,7 +10,7 @@
     echo template("templates/partials/nav.php");
 
     //Build SQL statement that selects students
-    $sql = "select * from students";
+    $sql = "select * from students;";
 
     $result = mysqli_query($conn,$sql);
 
@@ -23,7 +23,7 @@
 
     while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
       $data['content'] .= "<tr><td>$row[studentid]</td><td>$row[dob]</td><td>$row[firstname]</td><td>$row[lastname]</td><td>$row[house]</td><td>$row[town]</td><td>$row[county]</td><td>$row[country]</td><td>$row[postcode]</td>";
-      $data['content'] .= "<td><input type='checkbox' name='selected' value='$row[studentid]'/></td></tr>";
+      $data['content'] .= "<td><input type='checkbox' name='selected[]' value='$row[studentid]'/></td></tr>";
     }
     $data['content'] .= "</table>";
     $data['content'] .= "<input type='submit' value='Delete'/>";
