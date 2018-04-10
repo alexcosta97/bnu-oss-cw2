@@ -27,6 +27,8 @@
       }
       $data['content'] .= "</table>";
 
+      mysqli_free_result($result);
+
       // render the template
       echo template("templates/default.php", $data);
 
