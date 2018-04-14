@@ -31,6 +31,7 @@
       $data['content'] .= "<td><input type='checkbox' name='selected[]' value='$row[studentid]'/></td></tr>";
     }
     $data['content'] .= "</table>";
+    $data['content'] .= "<br/>";
     $data['content'] .= "<input type='submit' value='Delete'/>";
     $data['content'] .= "</form>";
     $data['content'] .= "<a href='addstudents.php'>Add Student</a>";   mysqli_free_result($result);
