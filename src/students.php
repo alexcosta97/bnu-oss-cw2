@@ -33,7 +33,7 @@
     $data['content'] .= "</table>";
     $data['content'] .= "<input type='submit' value='Delete'/>";
     $data['content'] .= "</form>";
-    mysqli_free_result($result);
+    $data['content'] .= "<a href='addstudents.php'>Add Student</a>";   mysqli_free_result($result);
     //render the template
     echo template("templates/default.php", $data);
   }
