@@ -10,9 +10,14 @@
     echo template("templates/partials/nav.php");
 
     //Build SQL statement that selects students
-    $sql = "select * from students;";
+    $sql = "select * from student;";
 
     $result = mysqli_query($conn,$sql);
+
+    if (!$result) {
+      printf("Error: %s\n", mysqli_error($conn));
+      exit();
+  }
 
     //prepare page content
     $data['content'] .= "<form action=
