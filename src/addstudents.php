@@ -3,43 +3,108 @@
   include("_includes/dbconnect.inc");
   include("_includes/functions.inc");
 
+  //Define variables for missing values and entered values as empty
+  $studentidErr = $passwordErr = $dobErr = $firstnameErr = $lastnameErr = $houseErr = $townErr = $countyErr = $countryErr = $postcodeErr = "";
+  $studentid = $password = $firstname = $lastname = $house = $town = $county = $country = $postcode = "";
+  $dob = date_create();
+
   //check if logged in
-  if(isset($_SESSION['id']) && !isset($_POST['studentid']))
+  if(isset($_SESSION['id']) && !($_SERVER["REQUEST_METHOD"]=="POST"))
   {
-    echo template("templates/partials/header.php");
-    echo template("templates/partials/nav.php");
-
-    //prepare page contents
-    $data['content'] .= "<form action'addstudents.php' method='post'>";
-    $data['content'] .= "<label for='studentid'>Student ID</label>";
-    $data['content'] .= "<input type='text' id='studentid' name='studentid'/><br/>";
-    $data['content'] .= "<label for='password'>Password</label>";
-    $data['content'] .= "<input type='password' id='password' name='password'/><br/>";
-    $data['content'] .= "<label for='dob'>Date Of Birth</label>";
-    $data['content'] .= "<input type='date' id='dob' name='dob'/><br/>";
-    $data['content'] .= "<label for='firstname'>First Name</label>";
-    $data['content'] .= "<input type='text' id='firstname' name='firstname'/><br/>";
-    $data['content'] .= "<label for='lastname'>Last Name</label>";
-    $data['content'] .= "<input type='text' id='lastname' name='lastname'/><br/>";
-    $data['content'] .= "<label for='house'>House</label>";
-    $data['content'] .= "<input type='text' id='house' name='house'/><br/>";
-    $data['content'] .= "<label for='town'>Town</label>";
-    $data['content'] .= "<input type='text' id='town' name='town'/><br/>";
-    $data['content'] .= "<label for='county'>County</label>";
-    $data['content'] .= "<input type='text' id='county' name='county'/><br/>";
-    $data['content'] .= "<label for='country'>Country</label>";
-    $data['content'] .= "<input type='text' id='country' name='country'/><br/>";
-    $data['content'] .= "<label for='postcode'>Postcode</label>";
-    $data['content'] .= "<input type='text' id='postcode' name='postcode'/><br/>";
-    $data['content'] .= "<input type='submit' value='Save'/>";
-    $data['content'] .= "</form>";
-
-    //Render the template
-    echo template("templates/default.php", $data);
+    //generate form
+    generateAddStudentsForm();
   }
-  else if(isset($_SESSION['id']))
+  else if(isset($_SESSION['id']) && $_SERVER["REQUEST_METHOD"] == "POST")
   {
-    header("Location:students.php");
+    if(empty($_POST['studentid']))
+    {
+      $studentidErr = "Student ID missing<br/>";
+    }
+    else{
+      $studentid = $_POST['studentid'];
+    }
+
+    if(empty($_POST['password']))
+    {
+      $passwordErr = "Password missing<br/>";
+    }
+    else
+    {
+      $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    }
+
+    if(empty($_POST['dob']))
+    {
+      $dobErr = "Date Of Birth missing</br>";
+    }
+    else{
+      $dob = $_POST['dob'];
+    }
+
+    if(empty($_POST['firstname']))
+    {
+      $firstnameErr = "First Name missing<br/>";
+    }
+    else
+    {
+      $firstname = $_POST['firstname'];
+    }
+
+    if(empty($_POST['lastname']))
+    {
+      $lastnameErr = "Last Name missing<br/>";
+    }
+    else{
+      $lastname = $_POST['lastname'];
+    }
+
+    if(empty($_POST['house']))
+    {
+      $houseErr = "House missing <br/>";
+    }
+    else{
+      $house = $_POST['house'];
+    }
+
+    if(empty($_POST['town']))
+    {
+      $townErr = "Town missing<br/>";
+    }
+    else{
+      $town = $_POST['town'];
+    }
+
+    if(empty($_POST['county']))
+    {
+      $countyErr = "County missing<br/>";
+    }
+    else
+    {
+      $county = $_POST['county'];
+    }
+
+    if(empty($_POST['country']))
+    {
+      $countryErr = "Country missing<br/>";
+    }
+    else
+    {
+      $country = $_POST['country'];
+    }
+
+    if(empty($_POST['postcode']))
+    {
+      $postcodeErr = "Postcode missing<br/>";
+    }
+    else
+    {
+      $postcode = $_POST['postcode'];
+    }
+
+    if(!empty($studentidErr) || !empty($passwordErr) || !empty($dobErr) || !empty($firstnameErr) || !empty($lastnameErr) || !empty($houseErr) || !empty($townErr) || !empty($countyErr) || !empty($countryErr) || !empty($postcodeErr))
+    {
+      generateAddStudentsForm($studentidErr, $passwordErr, $dobErr, $firstnameErr, $lastnameErr, $houseErr, $townErr, $countyErr, $countryErr, $postcodeErr);
+    }
   }
   else
   {
