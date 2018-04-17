@@ -13,7 +13,12 @@
    }
 
    if (isset($_SESSION['id'])) {
-      $data['content'] = "<h2><small>Welcome to your dashboard.</small></h2>";
+      $data['content'] .= "<div class='row'>";
+      $data['content'] .= "<div class='col-md-1'></div>";
+      $data['content'] .= "<div class='jumbotron col-md-10'>";
+      $data['content'] .= "<h1>Welcome to your dashboard</h1>";
+      $data['content'] .= "</div>";
+      $data['content'] .= "<div class='col-md-1'></div></div>";
       echo template("templates/partials/nav.php");
       echo template("templates/default.php", $data);
    } else {
