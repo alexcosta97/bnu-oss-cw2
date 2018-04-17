@@ -35,7 +35,7 @@
     $data['content'] .= "</tbody></table>";
     $data['content'] .= "<br/>";
     $data['content'] .= "<div class='row'>";
-    $data['content'] .= "<input class='btn' type='submit' value='Delete'/>";
+    $data['content'] .= "<input class='btn btn-primary btn-md' type='submit' value='Delete'/>";
     $data['content'] .= "</form>";
     $data['content'] .= "<a href='addstudents.php'>Add Student</a>";
     $data['content'] .= "</div>";
