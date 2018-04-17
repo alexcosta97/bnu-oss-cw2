@@ -5,25 +5,42 @@
 
   if(isset($_SESSION['id']))
   {
+    $select = $_POST['selected'];
     //Building the query depending on the selected records
-    if(!empty($_POST['selected']))
+    if(!empty($select))
     {
-      $sql = "Delete from students where";
-      $lastElement = end($_POST['selected']);
-      foreach($_POST['selected'] as $selected)
+      $lastElement = end($select);
+      $sql = "Delete from student where ";
+      foreach($select as $stu)
       {
-        if($selected != $lastElement)
+        if(strcmp($stu, $lastElement) != 0)
         {
-          $sql .= " id=$selected AND";
+          $sql .= " studentid=$stu AND ";
         }
         else
         {
-          $sql .= " id=$selected;";
+          $sql .= " studentid=$stu ;";
         }
       }
+      $result = mysqli_query($conn, $sql);
+      if($result)
+      {
+        header("Location: students.php");
+      }
+      else
+      {
+        printf("Error: %s\n", mysqli_error($conn));#
+        printf($sql);
+        exit();
+      }
     }
-
-    mysqli_query($conn, $sql);
-    header("Location: students.php");
+    else
+    {
+      header("Location: students.php");
+    }
+  }
+  else
+  {
+    header("Location: index.php");
   }
 ?>
