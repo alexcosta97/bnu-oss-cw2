@@ -1,4 +1,4 @@
-
+<div class="row">
 <div id="main-nav">
 
    <a href="modules.php">My Modules</a> |
@@ -7,4 +7,5 @@
    <a href="students.php">Students</a> |
    <a href="logout.php">Logout</a>
 
+</div>
 </div>
