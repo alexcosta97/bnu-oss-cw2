@@ -25,7 +25,7 @@
     $data['content'] .= "<div class='page-header'>";
     $data['content'] .= "<h1>Students</h1>";
     $data['content'] .= "</div>";
-    $data['content'] .= "<table class='table table-hover table-condensed table-bordered table-responsive'>";
+    $data['content'] .= "<table class='table table-hover table-condensed table-bordered'>";
     $data['content'] .= "<thead><tr><th>Student ID</th><th>DOB</th><th>First Name</th><th>Last Name</th><th>House</th><th>Town</th><th>County</th><th>Country</th><th>Postcode</th><th>Selected</th></tr></thead><tbody>";
 
     while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
