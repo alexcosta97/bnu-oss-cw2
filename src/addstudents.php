@@ -29,6 +29,7 @@
     if(empty($_POST['password']))
     {
       $data['content'] .= "Password missing<br/>";
+      // $data['validation']['password'] =
     }
     else
     {
