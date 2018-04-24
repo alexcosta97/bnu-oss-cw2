@@ -1,5 +1,5 @@
 <?php
-	//  Build PDO connection to database and display any errors
+	//  Build PDO connection to database and display any errors with the connection
 
   try
   {
