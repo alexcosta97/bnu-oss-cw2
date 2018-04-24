@@ -32,7 +32,7 @@ if (isset($_SESSION['id'])) {
         $data['content'] .= "<option value='$row[modulecode]'>$row[name]</option>";
      }
      $data['content'] .= "</select><br/>";
-     $data['content'] .= "<input type='submit' name='confirm' value='Save' />";
+     $data['content'] .= "<input type='submit' class='btn btn-primary btn-md' name='confirm' value='Save' />";
      $data['content'] .= "</form>";
    }
 

@@ -78,7 +78,7 @@ if (isset($_SESSION['id'])) {
       <input name="txtcountry" type="text" class="form-control" value="{$row['country']}" />
     </div>
   </div>
-   <input type="submit" value="Save" name="submit"/>
+   <input type="submit" value="Save" class="btn btn-primary btn-md" name="submit"/>
    </form>
 
 EOD;

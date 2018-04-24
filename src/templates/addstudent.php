@@ -51,5 +51,5 @@
       <input type="text" id="country" class="form-control" name="country"/>
     </div>
   </div>
-  <input type="submit" value="Save"/>
+  <input type="submit" class="btn btn-primary btn-md" value="Save"/>
 </form>
