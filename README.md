@@ -18,7 +18,7 @@ The source code for this project is based on the [bnu-php-example](https://githu
 4. Add a new column in the table for each record to allow the selection of records :heavy_check_mark:
 5. Add a delete button and update the script so that the selected records are deleted :heavy_check_mark:
 6. Create a script that allows the creation of new students :heavy_check_mark:
-7. Create UI/UX for the system using current technologies (HTML/CSS standards or frameworks)
+7. Create UI/UX for the system using current technologies (HTML/CSS standards or frameworks) :heavy_check_mark:
 8. Protect the SQL queries against SQL Injection
 9. Research: Critically evaluate alternative server-side PHP and ASP.NET
 10. Research: Give an account of key security concerns that should be considered by developers of systems for managing personal data
