@@ -13,4 +13,4 @@
    </head>
 
    <body>
-    <div class="body-container">
+    <div class="container">
