@@ -26,7 +26,7 @@
     $data['content'] .= "<h1>Students</h1>";
     $data['content'] .= "</div>";
     $data['content'] .= "<table class='table table-hover table-condensed table-bordered'>";
-    $data['content'] .= "<thead><tr><th>Student ID</th><th>DOB</th><th>First Name</th><th>Last Name</th><th>House</th><th>Town</th><th>County</th><th>Country</th><th>Postcode</th><th>Selected</th></tr></thead><tbody>";
+    $data['content'] .= "<thead class='thead-light'><tr><th>Student ID</th><th>DOB</th><th>First Name</th><th>Last Name</th><th>House</th><th>Town</th><th>County</th><th>Country</th><th>Postcode</th><th>Selected</th></tr></thead><tbody>";
 
     while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
       $data['content'] .= "<tr><td>$row[studentid]</td><td>$row[dob]</td><td>$row[firstname]</td><td>$row[lastname]</td><td>$row[house]</td><td>$row[town]</td><td>$row[county]</td><td>$row[country]</td><td>$row[postcode]</td>";
@@ -35,7 +35,7 @@
     $data['content'] .= "</tbody></table>";
     $data['content'] .= "<br/>";
     $data['content'] .= "<div class='row'>";
-    $data['content'] .= "<a href='addstudents.php' class='btn btn-primary btn-md' role='button'>Add Student</a>";
+    $data['content'] .= "<a href='addstudents.php' class='btn btn-primary btn-md mr-2' role='button'>Add Student</a>";
     $data['content'] .= "<input class='btn btn-danger btn-md' type='submit' value='Delete'/>";
     $data['content'] .= "</form>";
     $data['content'] .= "</div>";
