@@ -17,14 +17,20 @@
       $result = mysqli_query($conn,$sql);
 
       // prepare page content
-      $data['content'] .= "<table border='1'>";
-      $data['content'] .= "<tr><th colspan='5' align='center'>Modules</th></tr>";
+      $data['content'] .= "<div class='page-header'>";
+      $data['content'] .= "<h1>My Modules</h1>";
+      $data['content'] .= "</div>";
+      $data['content'] .= "<table class='table table-hover table-condensed table-bordered'>";
+      $data['content'] .= "<thead class='thead-light'>";
       $data['content'] .= "<tr><th>Code</th><th>Type</th><th>Level</th></tr>";
+      $data['content'] .= "</thead>";
+      $data['content'] .= "<tbody>";
       // Display the modules within the html table
       while($row = mysqli_fetch_array($result)) {
          $data['content'] .= "<tr><td> $row[modulecode] </td><td> $row[name] </td>";
          $data['content'] .= "<td> $row[level] </td></tr>";
       }
+      $data['content'] .= "</tbody>";
       $data['content'] .= "</table>";
 
       mysqli_free_result($result);
