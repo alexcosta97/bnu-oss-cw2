@@ -14,7 +14,7 @@
 
    if (isset($_SESSION['id'])) {
       $data['content'] .= "<div class='row'>";
-      $data['content'] .= "<div class='jumbotron col'>";
+      $data['content'] .= "<div class='jumbotron col mt-1'>";
       $data['content'] .= "<h1>Welcome to your dashboard</h1>";
       $data['content'] .= "</div>";
       $data['content'] .= "</div>";
