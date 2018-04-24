@@ -27,7 +27,7 @@
   </div>
   <div class="form-row">
     <div class="form-group col-6">
-      <label for="house">House</label>
+      <label for="house">Number and Street</label>
       <input type="text" id="house" class="form-control" name="house"/>
     </div>
   </div>
