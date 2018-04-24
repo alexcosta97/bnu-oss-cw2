@@ -40,22 +40,44 @@ if (isset($_SESSION['id'])) {
       // also http://stackoverflow.com/questions/8280360/formatting-an-array-value-inside-a-heredoc
       $data['content'] = <<<EOD
 
-   <h2>My Details</h2>
+   <h1>My Details</h2>
    <form name="frmdetails" action="" method="post">
-   First Name :
-   <input name="txtfirstname" type="text" value="{$row['firstname']}" /><br/>
-   Surname :
-   <input name="txtlastname" type="text"  value="{$row['lastname']}" /><br/>
-   Number and Street :
-   <input name="txthouse" type="text"  value="{$row['house']}" /><br/>
-   Town :
-   <input name="txttown" type="text"  value="{$row['town']}" /><br/>
-   County :
-   <input name="txtcounty" type="text"  value="{$row['county']}" /><br/>
-   Country :
-   <input name="txtcountry" type="text"  value="{$row['country']}" /><br/>
-   Postcode :
-   <input name="txtpostcode" type="text"  value="{$row['postcode']}" /><br/>
+   <div class="form-row">
+    <div class="form-group col-6">
+      <label for="txtfirstname">First Name</label>
+      <input name="txtfirstname" class="form-control" type="text" value="{$row['firstname']}" />
+    </div>
+    <div class="form-group col-6">
+      <label for="txtlastname">Surname</label>
+      <input name="txtlastname" type="text" class="form-control" value="{$row['lastname']}" />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-6">
+      <label for="txthouse">Number and Street</label>
+      <input name="txthouse" type="text" class="form-control" value="{$row['house']}" />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-6">
+      <label for="txttown">Town</label>
+      <input name="txttown" type="text" class="form-control" value="{$row['town']}" />
+    </div>
+    <div class="form-group col-4">
+      <label for="txtcounty">County</label>
+      <input name="txtcounty" type="text" class="form-control" value="{$row['county']}" />
+    </div>
+    <div class="form-group col-2">
+      <label for="txtpostcode">Postcode</label>
+      <input name="txtpostcode" type="text" class="form-control" value="{$row['postcode']}" />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-6">
+      <label for="txtcountry">Country</label>
+      <input name="txtcountry" type="text" class="form-control" value="{$row['country']}" />
+    </div>
+  </div>
    <input type="submit" value="Save" name="submit"/>
    </form>
 
