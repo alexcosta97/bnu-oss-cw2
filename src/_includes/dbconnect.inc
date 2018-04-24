@@ -1,10 +1,12 @@
 <?php
-	//  replace mysqllogin and mysqlpassword with your own
-	$conn = mysqli_connect("localhost", "root", "Codigo-1997", "oss-cw2");
+	//  Build PDO connection to database and display any errors
 
-	if (mysqli_connect_errno()) {
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
-		die();
-	}
-
+  try
+  {
+    $conn = new PDO('mysql:host=localhost;dbname=oss-cw2;charset=utf8', 'root', 'Codigo-1997', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+  }
+  catch(Exception $error)
+  {
+    die('Error: ' . $error->getMessage());
+  }
 ?>
