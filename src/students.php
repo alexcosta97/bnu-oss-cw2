@@ -37,7 +37,7 @@
     }
     $data['content'] .= "</tbody></table>";
     $data['content'] .= "<br/>";
-    $data['content'] .= "<div class='row'>";
+    $data['content'] .= "<div class='form-group'>";
     $data['content'] .= "<a href='addstudents.php' class='btn btn-primary btn-md mr-2' role='button'>Add Student</a>";
     $data['content'] .= "<input class='btn btn-danger btn-md' type='submit' value='Delete'/>";
     $data['content'] .= "</form>";
