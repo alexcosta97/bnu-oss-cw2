@@ -112,20 +112,26 @@
     }
     //if all the data is present, moves on to add the data to the database
     else{
-      $sql = "Insert Into `student`(`studentid`, `password`, `dob`, `firstname`, `lastname`, `house`, `town`, `county`, `country`, `postcode`) Values('$studentid', '$password', '$dob', '$firstname', '$lastname', '$house', '$town', '$county', '$country', '$postcode');";
-
-      $result = mysqli_query($conn, $sql);
+      $sql = $conn -> prepare('INSERT INTO student(studentid, `password`, dob, firstname, lastname, house, town, county, country, postcode) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+      $result = $sql -> execute(
+        array(
+          $studentid,
+          $password,
+          $dob,
+          $firstname,
+          $lastname,
+          $house,
+          $town,
+          $county,
+          $country,
+          $postcode
+        )
+        );
 
       //if the transaction has succeeded then send the user back to the students page
       if($result)
       {
         header("Location: students.php");
-      }
-      //otherwise print an error message
-      else
-      {
-        printf("Error: %s\n", mysqli_error($conn));
-        exit();
       }
     }
   }
