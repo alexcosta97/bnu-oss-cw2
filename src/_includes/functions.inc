@@ -10,22 +10,18 @@
 function validatelogin($id,$password) {
    global $conn;
    // Build an SQL statment that will return a record with a matching id
-   $sql = "select * from student where studentid='$id';";
-	//echo $sql;
-   $loginresult = mysqli_query($conn, $sql);
-   $studentdetails = mysqli_fetch_assoc($loginresult);
-	//print_r($studentdetails);
-
-	// use PHP's verify_password function to check whether the stored
-	// hash matches the given password
-	if (password_verify($password, $studentdetails['password'])) {
-		$_SESSION['id'] = $id;
-		return true;
-	}
-	else {
-		$_SESSION['id'] = '';
-		return false;
-	}
+  $sql = $conn -> prepare("SELECT * FROM student where studentid = ?");
+      $sql -> execute(array($id));
+      $user = $sql->fetch();
+      if ($user && password_verify($_POST['txtpwd'], $user['password'])) {
+         // valid
+         $_SESSION['id'] = $id;
+         return true;
+      } else {
+         // invalid
+         unset($_SESSION['id']);
+         return false;
+      }
 }
 
 

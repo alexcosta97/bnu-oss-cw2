@@ -1,12 +1,10 @@
 <?php
 	//  Build PDO connection to database and display any errors with the connection
-
-  try
-  {
-    $conn = new PDO('mysql:host=localhost;dbname=oss-cw2;charset=utf8', 'root', 'Codigo-1997', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-  }
-  catch(Exception $error)
-  {
-    die('Error: ' . $error->getMessage());
-  }
+  try{
+    $conn = new PDO('mysql:host=localhost;dbname=oss-cw2;charset=utf8mb4', 'root', 'Codigo-1997', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+   }
+   catch(Exception $error)
+   {
+     die('Error: ' . $error->getMessage());
+   }
 ?>
