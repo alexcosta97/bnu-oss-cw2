@@ -15,23 +15,18 @@
       {
         if(strcmp($stu, $lastElement) != 0)
         {
-          $sql .= " studentid=$stu AND ";
+          $sql .= " studentid=? AND ";
         }
         else
         {
-          $sql .= " studentid=$stu ;";
+          $sql .= " studentid=$? ;";
         }
       }
-      $result = mysqli_query($conn, $sql);
+      $query = $conn -> prepare($sql);
+      $result = $query -> execute($select);
       if($result)
       {
         header("Location: students.php");
-      }
-      else
-      {
-        printf("Error: %s\n", mysqli_error($conn));#
-        printf($sql);
-        exit();
       }
     }
     else
