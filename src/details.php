@@ -15,25 +15,33 @@ if (isset($_SESSION['id'])) {
    if (isset($_POST['submit'])) {
 
       // build an sql statment to update the student details
-      $sql = "update student set firstname ='" . $_POST['txtfirstname'] . "',";
-      $sql .= "lastname ='" . $_POST['txtlastname']  . "',";
-      $sql .= "house ='" . $_POST['txthouse']  . "',";
-      $sql .= "town ='" . $_POST['txttown']  . "',";
-      $sql .= "county ='" . $_POST['txtcounty']  . "',";
-      $sql .= "country ='" . $_POST['txtcountry']  . "',";
-      $sql .= "postcode ='" . $_POST['txtpostcode']  . "' ";
-      $sql .= "where studentid = '" . $_SESSION['id'] . "';";
-      $result = mysqli_query($conn,$sql);
+      $sql = 'UPDATE student SET firstname = ?, lastname = ?, house = ?, town = ?, county = ?, country = ?, postcode = ? WHERE studentid = ?';
+      $query = $conn -> prepare($sql);
+      $result = $query -> execute(array(
+        $_POST['txtfirstname'],
+        $_POST['txtlastname'],
+        $_POST['txthouse'],
+        $_POST['txttown'],
+        $_POST['txtcounty'],
+        $_POST['txtcountry'],
+        $_POST['txtpostcode'],
+        $_SESSION['id']
+      ));
 
-      $data['content'] = "<p>Your details have been updated</p>";
+      if($result)
+      {
+        $data['content'] .= '<p>Your details have been updated.</p>';
+      }
 
    }
    else {
       // Build a SQL statment to return the student record with the id that
       // matches that of the session variable.
-      $sql = "select * from student where studentid='". $_SESSION['id'] . "';";
-      $result = mysqli_query($conn,$sql);
-      $row = mysqli_fetch_array($result);
+      $sql = 'SELECT * from student where studentid=? ;';
+      $query = $conn -> prepare($sql);
+      $query -> execute(array($_SESSION['id']));
+      $row = $query -> fetch();
+      $query -> closeCursor();
 
       // using <<<EOD notation to allow building of a multi-line string
       // see http://stackoverflow.com/questions/6924193/what-is-the-use-of-eod-in-php for info
