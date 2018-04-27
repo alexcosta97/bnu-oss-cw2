@@ -13,16 +13,15 @@ if (isset($_SESSION['id'])) {
 
    // If a module has been selected
    if (isset($_POST['selmodule'])) {
-      $sql = "insert into studentmodules values ('" .  $_SESSION['id'] . "','" . $_POST['selmodule'] . "');";
-      $result = mysqli_query($conn, $sql);
+      $sql = $conn -> prepare('INSERT INTO studentmodules values (?, ?)');
+      $sql -> execute(array($_SESSION['id'], $_POST['selmodule']));
       $data['content'] .= "<p>The module " . $_POST['selmodule'] . " has been assigned to you</p>";
    }
    else  // If a module has not been selected
    {
 
      // Build sql statment that selects all the modules
-     $sql = "select * from module";
-     $result = mysqli_query($conn, $sql);
+     $sql = $conn -> query('SELECT * FROM module');
 
      $data['content'] .= "<h1>Assign Modules</h1>";
      $data['content'] .= "<form name='frmassignmodule' action='' class='mt-1' method='post' >";
@@ -31,9 +30,10 @@ if (isset($_SESSION['id'])) {
      $data['content'] .= "<label for='selmodule'>Select a module to assign</label>";
      $data['content'] .= "<select name='selmodule' id='selmodule' class='form-control'>";
      // Display the module name sin a drop down selection box
-     while($row = mysqli_fetch_array($result)) {
+     while($row = $sql -> fetch()) {
         $data['content'] .= "<option value='$row[modulecode]'>$row[name]</option>";
      }
+     $sql -> closeCursor();
      $data['content'] .= "</select>";
      $data['content'].= "</div></div>";
      $data['content'] .= "<input type='submit' class='btn btn-primary btn-md' name='confirm' value='Save' />";
