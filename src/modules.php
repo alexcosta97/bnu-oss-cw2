@@ -12,9 +12,8 @@
       echo template("templates/partials/nav.php");
 
       // Build SQL statment that selects a student's modules
-      $sql = "select * from studentmodules sm, module m where m.modulecode = sm.modulecode and sm.studentid = '" . $_SESSION['id'] ."';";
-
-      $result = mysqli_query($conn,$sql);
+      $sql = $conn -> prepare('Select * from studentmodules sm, module m where m.modulecode = sm.modulecode and sm.studentid = ?');
+      $sql -> execute(array($_SESSION['id']));
 
       // prepare page content
       $data['content'] .= "<div class='page-header'>";
@@ -26,14 +25,13 @@
       $data['content'] .= "</thead>";
       $data['content'] .= "<tbody>";
       // Display the modules within the html table
-      while($row = mysqli_fetch_array($result)) {
+      while($row = $sql -> fetch()) {
          $data['content'] .= "<tr><td> $row[modulecode] </td><td> $row[name] </td>";
          $data['content'] .= "<td> $row[level] </td></tr>";
       }
+      $sql -> closeCursor();
       $data['content'] .= "</tbody>";
       $data['content'] .= "</table>";
-
-      mysqli_free_result($result);
 
       // render the template
       echo template("templates/default.php", $data);
