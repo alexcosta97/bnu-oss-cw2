@@ -1,0 +1,45 @@
+\chapter{Protecting the SQL Queries against SQL Injection}
+
+In order to protect the SQL queries against SQL Injection, I will be using prepared statements with paramererized queries.
+
+According to OWASP (Open Web Application Security Project), parameterized queries allow the database to distinguish between code and data, independently of what the user supplies as an input, therefore preventing an attacker from changing the meaning of a statement by inserting SQL into the query.
+
+In PHP, the best way to have prepared statements with parameterized queries is by using PDO (PHP Data Objects) to manage both the connection to the database and the process of building and executing the queries.
+
+Because of that, the dbconnect.inc had to be modified so that the PDO object and the connection to the database would be set up.
+
+\captionsetup{type=figure}\captionof{figure}{dbconnect.inc}
+\subfile{pyg/src/_includes/dbconnect}
+
+The next files that were modified to support that change were all the files that needed to do queries to the database:
+
+\begin{itemize}
+  \item functions.inc
+  \item addstudents.php
+  \item assignmodule.php
+  \item delete.php
+  \item details.php
+  \item modules.php
+  \item students.php
+\end{itemize}
+
+\captionsetup{type=figure}\captionof{figure}{functions.inc}
+\subfile{pyg/src/_includes/functions.inc}
+
+\captionsetup{type=figure}\captionof{figure}{addstudents.php}
+\subfile{pyg/src/addstudents.php}
+
+\captionsetup{type=figure}\captionof{figure}{assignmodule.php}
+\subfile{pyg/src/assignmodule.php}
+
+\captionsetup{type=figure}\captionof{figure}{delete.php}
+\subfile{pyg/src/delete.php}
+
+\captionsetup{type=figure}\captionof{figure}{details.php}
+\subfile{pyg/src/details.php}
+
+\captionsetup{type=figure}\captionof{figure}{modules.php}
+\subfile{pyg/src/modules.php}
+
+\captionsetup{type=figure}\captionof{figure}{students.php}
+\subfile{pyg/src/students.php}
