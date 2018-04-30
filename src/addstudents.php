@@ -4,7 +4,8 @@
   include("_includes/functions.inc");
 
   //Define variables for entered values as empty
-  $studentid = $password = $firstname = $lastname = $house = $town = $county = $country = $postcode = "";
+  $studentid = $password = $firstname = $lastname = "";
+  $house = $town = $county = $country = $postcode = "";
   $dob = date_create();
 
   //check if logged in
@@ -17,7 +18,8 @@
   }
   else if(isset($_SESSION['id']) && $_SERVER["REQUEST_METHOD"] == "POST")
   {
-    //Verifies that all the data has been entered and assigns the entered information into variables
+    //Verifies that all the data has been entered and assigns
+    //the entered information into variables
     if(empty($_POST['studentid']))
     {
       $data['validation']['studentid'] = true;
@@ -103,7 +105,8 @@
       $postcode = $_POST['postcode'];
     }
 
-    //if any error message has been added to $data['content'] prints the form again with the error messages
+    //if any error message has been added to $data['content']
+    //prints the form again with the error messages
     if(!empty($data['validation']))
     {
       echo template("templates/partials/header.php");
@@ -112,7 +115,10 @@
     }
     //if all the data is present, moves on to add the data to the database
     else{
-      $sql = $conn -> prepare('INSERT INTO student(studentid, `password`, dob, firstname, lastname, house, town, county, country, postcode) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+      $sql = $conn -> prepare('INSERT INTO student(studentid,
+        `password`, dob, firstname, lastname, house,
+        town, county, country, postcode) VALUES(?, ?, ?,
+        ?, ?, ?, ?, ?, ?, ?)');
       $result = $sql -> execute(
         array(
           $studentid,
@@ -128,7 +134,8 @@
         )
         );
 
-      //if the transaction has succeeded then send the user back to the students page
+      //if the transaction has succeeded then send the user back
+      //to the students page
       if($result)
       {
         header("Location: students.php");

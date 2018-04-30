@@ -14,7 +14,8 @@
     </div>
     <div class="form-group col-6">
       <label for="password">Password</label>
-      <input type="password" id="password" class="form-control" name="password"/>
+      <input type="password" id="password" class="form-control"
+      name="password"/>
       <?php
         if(isset($validation['password']))
         {?>

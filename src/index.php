@@ -8,7 +8,8 @@
 
    if (isset($_GET['return'])) {
       $msg = "";
-      if ($_GET['return'] == "fail") {$msg = "Login Failed. Please try again.";}
+      if ($_GET['return'] == "fail") {$msg = "Login Failed.
+        Please try again.";}
       $data['message'] = "<p>$msg</p>";
    }
 

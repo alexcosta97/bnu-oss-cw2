@@ -1,7 +1,10 @@
 <body>
   <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
     <a class="navbar-brand" href="#">BNU Student Application</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expand="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button"
+    data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expand="false"
+    aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
