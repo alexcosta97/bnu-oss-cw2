@@ -1,0 +1,45 @@
+\chapter{Developing the UI/UX for the web app}
+The User Interface was developed using Bootstrap. It was applied throughout the pages and partial templates in order to give the app a similar feel and look and the same responsiveness throughout all the pages.
+
+To start the UI, the Bootstrap CSS and JavaScripts had to be added to the header template:
+
+\captionsetup{type=figure}\captionof{figure}{header.php}
+\subfile{pyg/src/templates/partials/header}
+
+The whole of the body is wrapped inside a container that sets the width and margins for the content inside the body of the page depending on the width of the device seeing the page. That div, as well as the declaration of the body, has been placed inside the nav template.
+
+The navigation bar has also been completely rebuilt in order to build the design of a full width with background colour navigation bar.
+
+\captionsetup{type=figure}\captionof{figure}{nav.php}
+\subfile{pyg/src/templates/partials/nav}
+
+The footer also had to be changed so that it would close the div that is set inside nav for the container of the body.
+
+\captionsetup{type=figure}\captionof{figure}{footer.php}
+\subfile{pyg/src/templates/partials/footer}
+
+Most elements throughout the page, if not having a semantic meaning, were replaced with elements that would have a semantic meaning for accessibility purposes but also to allow the appropriate Bootstrap styling to be applied. Some extra divs might have also been added to separate the different sections and groups of elements, particularly for forms.
+
+\url{http://intweb.bucks.ac.uk/~21611431/}
+\captionsetup{type=figure}\captionof{figure}{index.php}
+\subfile{pyg/src/index}
+
+\url{http://intweb.bucks.ac.uk/~21611431/modules.php}
+\captionsetup{type=figure}\captionof{figure}{modules.php}
+\subfile{pyg/src/modules}
+
+\url{http://intweb.bucks.ac.uk/~21611431/assignmodule.php}
+\captionsetup{type=figure}\captionof{figure}{assignmodule.php}
+\subfile{pyg/src/assignmodule}
+
+\url{http://intweb.bucks.ac.uk/~21611431/details.php}
+\captionsetup{type=figure}\captionof{figure}{details.php}
+\subfile{pyg/src/details}
+
+\url{http://intweb.bucks.ac.uk/~21611431/students.php}
+\captionsetup{type=figure}\captionof{figure}{students.php}
+\subfile{pyg/src/students}
+
+\url{http://intweb.bucks.ac.uk/~21611431/addstudents.php}
+\captionsetup{type=figure}\captionof{figure}{addstudent.php}
+\subfile{pyg/src/templates/addstudent}
