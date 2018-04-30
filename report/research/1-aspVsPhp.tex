@@ -1,0 +1,73 @@
+\chapter{Evaluation of ASP.NET and PHP}
+
+\section{ASP.NET: Overview, Advantages and Disadvantages}
+
+According to Microsoft documentation, ASP.NET is a free web framework used to build websites and web applications using HTML, CSS and JavaScript. It can also be used to create Web APIs and to use real-time technologies like Web Socket.
+
+For websites and web applications, ASP.NET offers three frameworks: Web Forms (built using drag-and-drop and is an event-driven model), ASP.NET MVC (pattern-based way to build sites with concise separation of different aspects of a web application) and ASP.NET Web Pages (Fast, approachable and lightweight way to combine server code with HTML).
+
+All the ASP.NET code is compiled when the first time a user requests a resource from the Web site. The code is ran inside a Common Language Runtime, which allows developers to develop in different languages, as long as they all are supported by the .NET Framework.
+
+The best points of this technologies are the following:
+\begin{itemize}
+  \item The system comes as a whole (no need to install many different components to get everything to work)
+  \item The templates allow for an easy set-up and also allow the user to focus on the functions of the code
+  \item Many of the items are built automatically for the user
+  \item Uses a strongly typed languages for better control of the application
+\end{itemize}
+
+When using ASP.NET, the whole process of building the website makes the developer feel like they are building the software that will serve and build the website for the user.
+
+The down-sides of ASP.NET are:
+\begin{itemize}
+  \item Is based on the .NET Framework, which only works on Windows (unless you use ASP.NET Core, the open-source multi-platform version of ASP.NET)
+  \item There are not many servers that run it due to the costs of maintaining a Windows Server
+  \item Requires you to install Visual Studio, which, for a production environment, means maintaining licenses that can be quite costly
+\end{itemize}
+
+\section{PHP: Overview, Advantages and Disadvantages}
+PHP is a general-purpose scripting language that was built with web development in mind. It is also open-source and can be embedded right inside HTML. It is a back-end scripiting language, meaning that it is ran on the server to generate HTML and is afterwards sent to the client.
+
+In order for a PHP application to work, there is a need to have three things:
+\begin{itemize}
+  \item A PHP Parser
+  \item A Web Server
+  \item A Web Browser
+\end{itemize}
+
+The web server needs to have the php parser installed in it. In order for databases to interact with the web pages produced with PHP, the server must get both the database software and the add-on support for PHP installed.
+
+Since PHP is not a full environment but only a scripting languages, no IDE is necessary, but also no templates are provided to the developer. A developer can use any environment they would like to develop PHP, but, when doing so, they would also need to write the entire system from scratch.
+
+In the most common cases, a PHP web application would be built and deployed in what is commonly called as a LAMP stack, which is constitued of the following:
+\begin{itemize}
+  \item Linux for the OS running the server
+  \item Apache for the software managing the server
+  \item MySQL for the Database Management System
+  \item PHP for the parser present on the server
+\end{itemize}
+
+However, any of these components are open-source and therefore can be deployed on any computer platform.
+
+With all this information in mind, the following are the advantages of PHP:
+\begin{itemize}
+  \item Is Open-Source and Multi-Platform natively
+  \item Allows the user to have full control of the code produced
+  \item Is easy to learn and integrate to HTML
+  \item The majority of web servers run PHP
+\end{itemize}
+
+And, like any other technologies, it also has its disadvantages, which are:
+\begin{itemize}
+  \item Does not provide any templates or help for a beginner user
+  \item Requires quite a lot of technology knowledge in order to troubleshoot
+  problems related to the stack
+  \item Requires installation of many different softwares to make a website work
+\end{itemize}
+
+\section{Conclusion}
+To finish evaluating both server-side options, I would say that both have their advantages and disadvantages, and that it can all be resumed to a matter of preference, especially now that ASP.NET also has an open-source and multi-platform version to run websites on any type of server.
+
+For a beginner however, ASP.NET would be much easier to grasp, since the person developing the web site would only need to focus on the functionality since everything else can be provided for them.
+
+For an expert, PHP would probably be a better choice, especially if they know all the ins and outs of building websites using that scripting language.
