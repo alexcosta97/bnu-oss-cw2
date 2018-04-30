@@ -20,7 +20,7 @@
     //Verifies that all the data has been entered and assigns the entered information into variables
     if(empty($_POST['studentid']))
     {
-      $data['content'] .= "Student ID missing<br/>";
+      $data['validation']['studentid'] = true;
     }
     else{
       $studentid = $_POST['studentid'];
@@ -28,8 +28,7 @@
 
     if(empty($_POST['password']))
     {
-      $data['content'] .= "Password missing<br/>";
-      // $data['validation']['password'] =
+      $data['validation']['password'] = true;
     }
     else
     {
@@ -38,7 +37,7 @@
 
     if(empty($_POST['dob']))
     {
-      $data['content'] .= "Date Of Birth missing</br>";
+      $data['validation']['dob'] = true;
     }
     else{
       $dob = $_POST['dob'];
@@ -46,7 +45,7 @@
 
     if(empty($_POST['firstname']))
     {
-      $data['content'] .= "First Name missing<br/>";
+      $data['validation']['firstname'] = true;
     }
     else
     {
@@ -55,7 +54,7 @@
 
     if(empty($_POST['lastname']))
     {
-      $data['content'] .= "Last Name missing<br/>";
+      $data['validation']['lastname'] = true;
     }
     else{
       $lastname = $_POST['lastname'];
@@ -63,7 +62,7 @@
 
     if(empty($_POST['house']))
     {
-      $data['content'] .= "House missing <br/>";
+      $data['validation']['house'] = true;
     }
     else{
       $house = $_POST['house'];
@@ -71,7 +70,7 @@
 
     if(empty($_POST['town']))
     {
-      $data['content'] .= "Town missing<br/>";
+      $data['validation']['town'] = true;
     }
     else{
       $town = $_POST['town'];
@@ -79,7 +78,7 @@
 
     if(empty($_POST['county']))
     {
-      $data['content'] .= "County missing<br/>";
+      $data['validation']['county'] = true;
     }
     else
     {
@@ -88,7 +87,7 @@
 
     if(empty($_POST['country']))
     {
-      $data['content'] .= "Country missing<br/>";
+      $data['validation']['country'] = true;
     }
     else
     {
@@ -97,7 +96,7 @@
 
     if(empty($_POST['postcode']))
     {
-      $data['content'] .= "Postcode missing<br/>";
+      $data['validation']['postcode'] = true;
     }
     else
     {
@@ -105,29 +104,34 @@
     }
 
     //if any error message has been added to $data['content'] prints the form again with the error messages
-    if(!empty($data['content']))
+    if(!empty($data['validation']))
     {
       echo template("templates/partials/header.php");
       echo template("templates/partials/nav.php");
-      echo template("templates/addstudent.php");
-      echo template("templates/default.php", $data);
+      echo template("templates/addstudent.php", $data);
     }
     //if all the data is present, moves on to add the data to the database
     else{
-      $sql = "Insert Into `student`(`studentid`, `password`, `dob`, `firstname`, `lastname`, `house`, `town`, `county`, `country`, `postcode`) Values('$studentid', '$password', '$dob', '$firstname', '$lastname', '$house', '$town', '$county', '$country', '$postcode');";
-
-      $result = mysqli_query($conn, $sql);
+      $sql = $conn -> prepare('INSERT INTO student(studentid, `password`, dob, firstname, lastname, house, town, county, country, postcode) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+      $result = $sql -> execute(
+        array(
+          $studentid,
+          $password,
+          $dob,
+          $firstname,
+          $lastname,
+          $house,
+          $town,
+          $county,
+          $country,
+          $postcode
+        )
+        );
 
       //if the transaction has succeeded then send the user back to the students page
       if($result)
       {
         header("Location: students.php");
-      }
-      //otherwise print an error message
-      else
-      {
-        printf("Error: %s\n", mysqli_error($conn));
-        exit();
       }
     }
   }
