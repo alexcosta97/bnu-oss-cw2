@@ -12,7 +12,7 @@
 \RequirePackage[useregional]{datetime2}
 \RequirePackage{natbib}
 \RequirePackage[nottoc]{tocbibind}
-\bibliographystyle{agsm}
+\bibliographystyle{abbrvnat}
 \addto\captionsbritish{\renewcommand{\bibname}{References}}
 % Image
 \RequirePackage{float}

@@ -2,7 +2,7 @@
 
 In order to protect the SQL queries against SQL Injection, I will be using prepared statements with paramererized queries.
 
-According to OWASP (Open Web Application Security Project), parameterized queries allow the database to distinguish between code and data, independently of what the user supplies as an input, therefore preventing an attacker from changing the meaning of a statement by inserting SQL into the query.
+According to OWASP (Open Web Application Security Project) \cite{sqlinjection}, parameterized queries allow the database to distinguish between code and data, independently of what the user supplies as an input, therefore preventing an attacker from changing the meaning of a statement by inserting SQL into the query.
 
 In PHP, the best way to have prepared statements with parameterized queries is by using PDO (PHP Data Objects) to manage both the connection to the database and the process of building and executing the queries.
 
